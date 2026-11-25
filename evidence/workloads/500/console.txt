@@ -1,0 +1,66 @@
+TCP SYN defense lab | modeled pressure and live loopback HTTP
+500 legitimate HTTP probes per scenario over 6 model windows
+Local HTTP service ready on 127.0.0.1:40037/health
+
+Baseline
+  Window 1  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 2  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 3  queue  0/32  200 x83  503 x0  filter drops  0  upstream blocked 0
+  Window 4  queue  0/32  200 x83  503 x0  filter drops  0  upstream blocked 0
+  Window 5  queue  0/32  200 x83  503 x0  filter drops  0  upstream blocked 0
+  Window 6  queue  0/32  200 x83  503 x0  filter drops  0  upstream blocked 0
+
+No defense / single source
+  Window 1  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 2  queue 32/32  200 x0  503 x84  filter drops  0  upstream blocked 0
+  Window 3  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 4  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 5  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 6  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+
+No defense / changing sources
+  Window 1  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 2  queue 32/32  200 x0  503 x84  filter drops  0  upstream blocked 0
+  Window 3  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 4  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 5  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 6  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+
+Per-source firewall / single source
+  Window 1  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 2  queue  2/32  200 x84  503 x0  filter drops 36  upstream blocked 0
+  Window 3  queue  4/32  200 x83  503 x0  filter drops 36  upstream blocked 0
+  Window 4  queue  6/32  200 x83  503 x0  filter drops 36  upstream blocked 0
+  Window 5  queue  6/32  200 x83  503 x0  filter drops 36  upstream blocked 0
+  Window 6  queue  6/32  200 x83  503 x0  filter drops 36  upstream blocked 0
+
+Per-source firewall / changing sources
+  Window 1  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 2  queue 32/32  200 x0  503 x84  filter drops  0  upstream blocked 0
+  Window 3  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 4  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 5  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 6  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+
+Automated defense / recovery
+  Window 1  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 2  queue 32/32  200 x0  503 x84  filter drops  0  upstream blocked 0
+  2026-11-25T16:47:55.710+00:00  suspected SYN flood; SYN_RECV=32; defense=active for next window
+  Window 3  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 0
+  Window 4  queue 32/32  200 x83  503 x0  filter drops  0  upstream blocked 0
+  Window 5  queue 32/32  200 x83  503 x0  filter drops  0  upstream blocked 0
+  Window 6  queue 32/32  200 x83  503 x0  filter drops  0  upstream blocked 0
+
+Automated defense / upstream bottleneck
+  Window 1  queue  0/32  200 x84  503 x0  filter drops  0  upstream blocked 0
+  Window 2  queue 32/32  200 x0  503 x84  filter drops  0  upstream blocked 63
+  2026-11-25T16:47:58.925+00:00  suspected SYN flood; SYN_RECV=32; defense=active for next window
+  Window 3  queue 32/32  200 x0  503 x83  filter drops  0  upstream blocked 63
+  Window 4  queue 32/32  200 x21  503 x62  filter drops  0  upstream blocked 62
+  Window 5  queue 32/32  200 x21  503 x62  filter drops  0  upstream blocked 62
+  Window 6  queue 32/32  200 x21  503 x62  filter drops  0  upstream blocked 62
+
+Linux kernel verification | disposable loopback-only namespace
+Kernel check: 12 HTTP 200 responses, 6 SYN cookies sent, 6 validated, original configuration restored.
+
+Evidence report evidence/report.html

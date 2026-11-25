@@ -6,9 +6,11 @@ Why does a per-IP limit help against pressure from one apparent source but lose 
 
 ## Method
 
-The attacker role is the in-memory workload in [pressure_model.py](../pressure_model.py). It represents incoming SYNs whose handshakes stay unfinished. The single-source and changing-source fixtures keep the total modeled pressure equal. A source label is simply a bucket in a Python calculation. The model creates zero packets and has no network target. All real requests come from the legitimate benchmark client.
+The attacker role uses Python data fixtures and a queue in [pressure_model.py](../pressure_model.py). The fixtures represent incoming SYNs whose handshakes stay unfinished. The single-source and changing-source fixtures keep the total modeled pressure equal. A source label is simply a bucket in a Python calculation. The model creates zero packets and has no network target. All real requests come from the legitimate benchmark client.
 
 Each case starts with a quiet window. Subsequent windows apply the same pressure fixture while the comparison changes the source grouping or defense setting. A separate fixture limits legitimate attempts before they reach the modeled server. This demonstrates the effect of an upstream bottleneck even when host mitigation activates.
+
+The comparison controls the model’s backlog capacity, expiration policy, detector threshold and pressure fixture. The 100-, 250- and 500-request profiles change the number of sequential legitimate probes. Use these profiles to show whether the model produces the same availability pattern with more observations.
 
 ## Team ownership
 

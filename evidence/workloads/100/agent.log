@@ -1,0 +1,4 @@
+WARNING 2026-11-25T16:46:24.461+00:00 suspected SYN flood | SYN_RECV=32 SYN/ACK=None consecutive=2
+INFO 2026-11-25T16:46:24.462+00:00 defense active
+WARNING 2026-11-25T16:46:26.834+00:00 suspected SYN flood | SYN_RECV=32 SYN/ACK=None consecutive=2
+INFO 2026-11-25T16:46:26.835+00:00 defense active

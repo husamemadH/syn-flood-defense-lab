@@ -1,0 +1,3 @@
+WARNING 2026-11-25T16:46:28.699+00:00 suspected SYN flood | SYN_RECV=32 SYN/ACK=None consecutive=2
+INFO 2026-11-25T16:46:28.872+00:00 defense active
+Kernel check: 12 HTTP 200 responses, 6 SYN cookies sent, 6 validated, original configuration restored.

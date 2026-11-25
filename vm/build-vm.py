@@ -40,7 +40,8 @@ def get_base(cache):
 def pack_project(root, destination):
     files = [*root.glob("*.py"), *root.glob("*.md"), root / "firewall_rules.sh"]
     for name in ("tests", "docs", "evidence", "handoff"):
-        files.extend(path for path in (root / name).glob("*") if path.is_file())
+        files.extend(path for path in (root / name).rglob("*") if path.is_file() and "__pycache__" not in path.parts)
+    files.extend(path for path in (root / "vm").glob("*") if path.is_file() and path.suffix in {".py", ".sh"})
     with ZipFile(destination, "w", ZIP_DEFLATED) as archive:
         for path in sorted(files):
             archive.write(path, Path("syn-flood-defense-lab") / path.relative_to(root))

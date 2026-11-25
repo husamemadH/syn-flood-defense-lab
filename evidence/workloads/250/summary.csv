@@ -1,0 +1,8 @@
+scenario,attempted,successful,success_pct,avg_success_ms,peak_syn_recv,modeled_capacity,peak_utilization_pct,filter_drops,upstream_drops,before_active_success,before_active_attempted,active_success,active_attempted
+baseline,250,250,100.0,1.999,0,32,0.0,0,0,208,208,0,0
+open-single,250,42,16.8,0.839,32,32,100.0,0,0,0,208,0,0
+open-distributed,250,42,16.8,0.756,32,32,100.0,0,0,0,208,0,0
+filter-single,250,250,100.0,1.725,6,32,18.8,180,0,208,208,0,0
+filter-distributed,250,42,16.8,2.304,32,32,100.0,0,0,0,208,0,0
+auto-success,250,166,66.4,2.233,32,32,100.0,0,0,0,84,124,124
+auto-failure,250,73,29.2,1.585,32,32,100.0,0,156,0,84,31,124

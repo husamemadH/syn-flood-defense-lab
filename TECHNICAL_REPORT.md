@@ -24,6 +24,8 @@ Both automated cases begin with 0/8 successes during pressure before activation.
 
 In the model, the per-source filter dropped 180 arrivals with a single source and zero with changing sources. This follows from the fixture and the modeled per-source rule. Mean measured latency among successes was under 1 ms in the recorded localhost run. Local HTTP timing reflects the demo service and environment. [Comparison charts and raw measurements](evidence/report.html)
 
+The Ubuntu VM workload extension compares 100, 250 and 500 legitimate probes per scenario under the same fixed pressure fixtures. [Workload comparison and raw evidence](evidence/workloads/README.md)
+
 ## Linux verification
 
 The separate verification started a new Linux network namespace with loopback as its only interface. It served six ordinary GETs with the original cookie setting and six after the fixture alerted and switched to unconditional kernel cookie test mode. All 12 returned HTTP 200. The kernel recorded six extra `SyncookiesSent` and six `SyncookiesRecv`, with zero `SyncookiesFailed`. The capture contains 144 frames across 12 ordinary TCP streams. During the post-trigger phase, the firewall recorded six allowed initial SYNs and zero drops. Cleanup restored the namespace cookie setting from 2 to 1 and removed the project's nftables table. The configured `tcp_max_syn_backlog` was 1024 and `tcp_synack_retries` was 5. Those are configuration readings. The comparison experiment uses a separate, fixed model capacity. [Kernel counters and cleanup evidence](evidence/kernel-check.json) · [Netfilter counters](evidence/firewall-after.txt) · [Packet capture](evidence/benign-http.pcap) · [Linux IP sysctl documentation](https://docs.kernel.org/networking/ip-sysctl.html#tcp-syncookies)

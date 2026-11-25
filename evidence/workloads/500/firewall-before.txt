@@ -1,0 +1,7 @@
+table ip syn_defense_lab {
+	chain input {
+		type filter hook input priority filter; policy accept;
+		iifname "lo" tcp dport 18080 tcp flags syn / fin,syn,rst,ack meter by_source size 65535 { ip saddr timeout 10s limit rate over 30/second burst 12 packets } counter packets 0 bytes 0 drop
+		iifname "lo" tcp dport 18080 tcp flags syn / fin,syn,rst,ack counter packets 0 bytes 0
+	}
+}
