@@ -4,7 +4,7 @@
 
 The [VM builder](../vm/build-vm.py) provisions Ubuntu Server 24.04 LTS x86-64 with 2 vCPUs and 2 GiB RAM. [provision-guest.sh](../vm/provision-guest.sh) installs the project and Linux tools. The [VM launcher](../vm/run-vm.py) disables the guest network adapter and uses a temporary disk overlay. The Python HTTP service and benchmark share the guest loopback interface. Kernel verification creates a second, disposable loopback-only namespace inside the guest. Automatic runs export evidence over a virtual serial port and power off.
 
-The environment team owns the VM scripts, boot and shutdown verification, setup documentation, and evidence export. [Operator manual and architecture diagram](../MANUAL.md)
+The environment team owns the VM scripts, boot and shutdown verification, setup documentation, and evidence export. [System architecture](architecture.md#system-architecture) · [VM build and export diagram](architecture.md#vm-build-and-evidence-export) · [Operator manual](../MANUAL.md)
 
 ## Build and run
 

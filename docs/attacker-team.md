@@ -25,3 +25,5 @@ The simulated attacker completes zero TCP connections before and after mitigatio
 ## What to show
 
 Compare `filter-single` and `filter-distributed` in the report. Under the same modeled pressure, the single-source case shows filter rejections and the queue stays below capacity. The changing-source case fills the model’s queue. Compare the modeled queue in `windows.csv` with the HTTP successes in `summary.csv`. [Ubuntu workload evidence](../evidence/workloads/README.md)
+
+[TCP handshake and flood pressure diagram](architecture.md#tcp-handshake-and-flood-pressure) · [Per-source filtering diagram](architecture.md#per-source-filtering)

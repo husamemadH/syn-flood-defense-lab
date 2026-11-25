@@ -25,3 +25,5 @@ A SYN cookie encodes information in the server’s SYN-ACK sequence number. The 
 ## What to show
 
 In the recovery case, cookies allow legitimate handshakes to complete while the modeled backlog is full. In the upstream case, about one in four legitimate connection attempts reaches the modeled server. The same defense helps the attempts that arrive. The comparative HTTP `503` statuses are application responses representing modeled rejections. For real cookie issuance and validation, open `kernel-check.json` from the separate benign traffic check. [Ubuntu workload evidence](../evidence/workloads/README.md)
+
+[Detector timing diagram](architecture.md#detector-timing) · [Kernel verification sequence](architecture.md#linux-kernel-verification)

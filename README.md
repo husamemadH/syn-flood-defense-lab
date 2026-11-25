@@ -4,6 +4,8 @@ This lab compares per-source filtering and automated SYN-cookie mitigation when 
 
 **Watch the demo.** The narrated video follows the TCP handshake, the simulated flood, the defender, and a recorded 500-request run in the offline Ubuntu VM. [Video with captions](handoff/syn-defense-demo.mp4?raw=true) · [Chapter transcript](handoff/demo-transcript.md)
 
+**Explore the architecture.** The diagrams show the VM boundaries, how the components interact, and how to trace a result back to its source. [Architecture and diagrams](docs/architecture.md)
+
 ## Team guides
 
 | Team | Guide |

@@ -2,6 +2,8 @@
 
 ## Architecture
 
+The diagram guide walks through component responsibilities, detector timing, both recovery outcomes, and the Linux kernel check. [Project architecture and diagrams](docs/architecture.md)
+
 ```mermaid
 flowchart LR
   F[Fixed comparison scenarios] --> Q[In-memory SYN queue and upstream model]
