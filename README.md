@@ -2,6 +2,8 @@
 
 This lab compares per-source filtering and automated SYN-cookie mitigation when a TCP SYN flood appears to come from one source or many. A deterministic Python model represents the flood and any upstream bottleneck. An ordinary loopback client measures HTTP responses selected by the model. A separate Linux check validates real SYN-cookie issuance and firewall counters with benign traffic.
 
+**Watch the demo.** The narrated video follows the TCP handshake, the simulated flood, the defender, and a recorded 500-request run in the offline Ubuntu VM. [Video with captions](handoff/syn-defense-demo.mp4?raw=true) · [Chapter transcript](handoff/demo-transcript.md)
+
 ## Team guides
 
 | Team | Guide |
@@ -44,6 +46,6 @@ python vm/run-vm.py --requests 500
 - [Original 24-request comparison](evidence/report.html) and [technical report](TECHNICAL_REPORT.md)
 - [100-, 250- and 500-request results from the Ubuntu VM](evidence/workloads/README.md)
 - [Operator manual and architecture diagram](MANUAL.md)
-- [Walkthrough transcript](handoff/transcript.md), [video](handoff/walkthrough.mp4), and [editable slide deck](handoff/TCP-SYN-Defense-Lab.pptx)
+- [Short walkthrough](handoff/walkthrough.mp4), [short walkthrough transcript](handoff/transcript.md), and [editable slide deck](handoff/TCP-SYN-Defense-Lab.pptx)
 
 Run the tests with `python -m unittest discover -s tests -v`.
