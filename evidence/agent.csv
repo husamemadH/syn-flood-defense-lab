@@ -1,0 +1,13 @@
+scenario,tick,timestamp,syn_recv_count,syn_ack_ratio,defense_status,consecutive,event
+auto-success,1,2026-11-25T16:10:12.987+00:00,0,1.0,watching,0,
+auto-success,2,2026-11-25T16:10:12.990+00:00,32,,watching,1,
+auto-success,3,2026-11-25T16:10:12.994+00:00,32,,active,2,suspected SYN flood
+auto-success,4,2026-11-25T16:10:12.998+00:00,32,10.5,active,3,
+auto-success,5,2026-11-25T16:10:13.002+00:00,32,10.5,active,4,
+auto-success,6,2026-11-25T16:10:13.005+00:00,32,10.5,active,5,
+auto-failure,1,2026-11-25T16:10:13.009+00:00,0,1.0,watching,0,
+auto-failure,2,2026-11-25T16:10:13.012+00:00,32,,watching,1,
+auto-failure,3,2026-11-25T16:10:13.015+00:00,32,,active,2,suspected SYN flood
+auto-failure,4,2026-11-25T16:10:13.018+00:00,32,39.0,active,3,
+auto-failure,5,2026-11-25T16:10:13.022+00:00,32,39.0,active,4,
+auto-failure,6,2026-11-25T16:10:13.025+00:00,32,39.0,active,5,

@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+/runs/
+/vm/runs/
+/vm/syn-vm-build-*/
+/vm/*.qcow2
+/vm/*.img
+/vm/*.iso
+/vm/*.build.log
+/vm/*.base-sha256.txt

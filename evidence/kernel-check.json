@@ -1,0 +1,64 @@
+{
+  "kernel": "7.2.4-arch1-2",
+  "namespace": "net:[4026532601]",
+  "interfaces": [
+    "lo"
+  ],
+  "service": "127.0.0.1:18080",
+  "tcp_max_syn_backlog": "1024",
+  "tcp_synack_retries": "5",
+  "observed_baseline_syn_recv": 0,
+  "cookies": {
+    "original": "1",
+    "active": "2",
+    "restored": "1"
+  },
+  "counters": {
+    "before": {
+      "SyncookiesSent": 0,
+      "SyncookiesRecv": 0,
+      "SyncookiesFailed": 0
+    },
+    "after_normal": {
+      "SyncookiesSent": 0,
+      "SyncookiesRecv": 0,
+      "SyncookiesFailed": 0
+    },
+    "after_test": {
+      "SyncookiesSent": 6,
+      "SyncookiesRecv": 6,
+      "SyncookiesFailed": 0
+    }
+  },
+  "test_deltas": {
+    "SyncookiesSent": 6,
+    "SyncookiesRecv": 6,
+    "SyncookiesFailed": 0
+  },
+  "fixture_decisions": [
+    {
+      "timestamp": "2026-11-25T16:10:13.266+00:00",
+      "syn_recv_count": 32,
+      "syn_ack_ratio": null,
+      "defense_status": "watching",
+      "consecutive": 1,
+      "event": ""
+    },
+    {
+      "timestamp": "2026-11-25T16:10:13.266+00:00",
+      "syn_recv_count": 32,
+      "syn_ack_ratio": null,
+      "defense_status": "active",
+      "consecutive": 2,
+      "event": "suspected SYN flood"
+    }
+  ],
+  "packet_capture": {
+    "frames": 144,
+    "streams": 12,
+    "initial_syns": 12,
+    "syn_acks": 12,
+    "http_200": 12
+  },
+  "firewall_removed": true
+}
