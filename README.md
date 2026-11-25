@@ -10,6 +10,14 @@ This lab compares per-source filtering and automated SYN-cookie mitigation when 
 | Defender | [Detection, mitigation, verification and ownership](docs/defender-team.md) |
 | Environment | [Ubuntu VM setup, isolation and reproducibility](docs/environment-team.md) |
 
+## How to read a result
+
+- **Whose requests?** The HTTP totals count legitimate client requests. The simulated attacker starts TCP handshakes and leaves every one unfinished.
+- **After activation?** The Python detector turns on simulated SYN-cookie protection at the end of window 3. The report counts windows 4–6 as post-activation.
+- **Upstream bottleneck?** A modeled limit on the network path before the server. It allows about one in four legitimate attempts to reach the server. SYN cookies help with the server’s backlog once an attempt reaches it.
+
+For example, the 500-request run sends 249 legitimate probes after activation. All 249 succeed in the recovery case. With the upstream limit, 63 of those 249 succeed. [Workload results](evidence/workloads/README.md)
+
 ## Run the demo
 
 Use Python 3.10 or later for the local comparison. Each request profile specifies the total number of legitimate HTTP probes **per scenario**. The default is 24. The larger profiles keep the simulated flood and detector settings fixed.

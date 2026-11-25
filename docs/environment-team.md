@@ -11,10 +11,14 @@ The environment team owns the VM scripts, boot and shutdown verification, setup 
 Install x86-64 QEMU, `qemu-img`, `xorriso`, `curl`, and Python 3.11 or later on the build host. Use a Linux host with KVM for hardware acceleration. QEMU can also fall back to emulation. Internet access is used during provisioning to access official Ubuntu packages. The finished demo boots offline. [Ubuntu QEMU documentation](https://ubuntu.com/docs/public-images/public-images-how-to/launch-qcow-with-qemu/)
 
 ```bash
+git clone https://github.com/husamemadH/syn-flood-defense-lab.git
+cd syn-flood-defense-lab
 python vm/build-vm.py
 python vm/run-vm.py --requests 100
 python vm/run-vm.py --requests 250
 python vm/run-vm.py --requests 500
 ```
 
-The launcher prints the path of the exported `report.html` after each run. For a manual session, run `python vm/run-vm.py --console`, then `syn-lab 250` and `syn-lab-poweroff` in the guest. The comparison also runs directly on a Python host with loopback sockets via `python demo.py --requests 250`.
+The build creates `vm/syn-flood-defense-ubuntu.qcow2`. Each automatic run exports a new folder under `vm/runs/` and prints the path of its `report.html`. Open that report for the comparison and `kernel-check.json` in the same folder for the real Linux counters.
+
+For a manual session, run `python vm/run-vm.py --console`, then `syn-lab 250` and `syn-lab-poweroff` in the guest. The comparison also runs directly on a Python host with loopback sockets via `python demo.py --requests 250`.

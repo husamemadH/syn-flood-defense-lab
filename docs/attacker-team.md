@@ -12,6 +12,8 @@ Each case starts with a quiet window. Subsequent windows apply the same pressure
 
 The comparison controls the model’s backlog capacity, expiration policy, detector threshold and pressure fixture. The 100-, 250- and 500-request profiles change the number of sequential legitimate probes. Use these profiles to show whether the model produces the same availability pattern with more observations.
 
+The simulated attacker completes zero TCP connections before and after mitigation. Before mitigation, an unfinished handshake can still occupy a queue slot. Enough of those entries can make legitimate connections fail. The benchmark's HTTP totals measure whether the legitimate client can still use the service.
+
 ## Team ownership
 
 | Project part | Responsibility |
@@ -22,4 +24,4 @@ The comparison controls the model’s backlog capacity, expiration policy, detec
 
 ## What to show
 
-Compare `filter-single` and `filter-distributed` in the report. Under the same modeled pressure, the single-source case shows filter rejections and the queue stays below capacity. The changing-source case fills the model’s queue. The HTTP 200 counter measures the legitimate client. Model traffic never finishes a handshake, so the simulated attacker has zero completed connections by design.
+Compare `filter-single` and `filter-distributed` in the report. Under the same modeled pressure, the single-source case shows filter rejections and the queue stays below capacity. The changing-source case fills the model’s queue. Compare the modeled queue in `windows.csv` with the HTTP successes in `summary.csv`. [Ubuntu workload evidence](../evidence/workloads/README.md)
